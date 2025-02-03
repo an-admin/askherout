@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Her Out</title>
+    <style>
+        body {
+            background-color: #ffccdc;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .question {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ff0066;
+            margin-bottom: 20px;
+            animation: bounce 1s infinite;
+        }
+        .gif {
+            width: 300px;
+            animation: fadeIn 2s;
+        }
+        .buttons {
+            margin-top: 20px;
+        }
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .btn:hover {
+            transform: scale(1.1);
+        }
+        .yes-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            color: white;
+            position: relative;
+        }
+        .popup {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff007f;
+            display: none;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Will you go out with me? 💌</div>
+        <img src="assets/cute.png">
+        <div class="buttons">
+            <button class="btn yes-btn" onclick="sayYes()">Yes! 😍</button>
+            <button class="btn no-btn" onclick="sayNo()">No 🙈</button>
+        </div>
+        <div class="popup" id="popup"></div>
+    </div>
+
+    <script>
+        let noCount = 0;
+        const responses = [
+            "Please! 😢", 
+            "Pretty please? 🥺", 
+            "I'll buy you chocolate! 🍫", 
+            "What if I say you're my favorite person? ❤️", 
+            "Okay, now I'm playing our song! 🎵", 
+            "You’re breaking my heart here! 💔", 
+            "Just say yes already! 😤"
+        ];
+        
+        function sayYes() {
+            alert("Yay! You said yes! 🎉 Let's plan our date! 💕");
+        }
+        
+        function sayNo() {
+            let popup = document.getElementById('popup');
+            if (noCount < responses.length) {
+                popup.innerHTML = responses[noCount];
+                popup.style.display = 'block';
+                noCount++;
+            } else {
+                let audio = new Audio('assets/song.mp3');
+                audio.play();
+            }
+        }
+    </script>
+</body>
+</html>
